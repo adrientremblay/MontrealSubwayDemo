@@ -1,9 +1,9 @@
 package tutorial_03_soen343;
 
 import java.util.*;
+import java.util.stream.Stream;
 
-public class Subway
-{
+public class Subway {
     private List stations;
     private List connections;
     private Map network;
@@ -24,22 +24,30 @@ public class Subway
     public boolean hasStation(String stationName) {
         return stations.contains(new Station(stationName));
     }
+
+    public Station getStation(String stationName) {
+        Stream<Station>  stationStream = this.stations.stream();
+        Optional<Station> foundStation = stationStream.filter(station -> station.getName() == stationName).findFirst();
+        if (foundStation.isPresent())
+            return foundStation.get();
+        return null;
+    }
     
     public void addConnection(String station1Name, String station2Name, String lineName) {
-    	if ((this.hasStation(station1Name)) && (this.hasStation(station2Name))) {
-            Station station1 = new Station(station1Name);
-            Station station2 = new Station(station2Name);
-            Connection connection = new Connection(station1, station2, lineName);
-            connections.add(connection);
-            connections.add(new Connection(station2, station1, connection.getLineName()));
-            
-            addToNetwork(station1, station2);
-            addToNetwork(station2, station1);
-        }
-        else
-        {
+        Station station1 = this.getStation(station1Name);
+        Station station2 = this.getStation(station2Name);
+
+        if (station1 == null || station2 == null) {
             throw new RuntimeException("Invalid connection: [" + station1Name + ", " + station2Name + ", " + lineName + "]");
         }
+
+        // two connections with station1 and station2 switch to represent
+        // being able to move back and forth from these two stations
+        connections.add(new Connection(station1, station2, lineName));
+        connections.add(new Connection(station2, station1, lineName));
+
+        addToNetwork(station1, station2);
+        addToNetwork(station2, station1);
     }
     
     private void addToNetwork(Station station1, Station station2) {
