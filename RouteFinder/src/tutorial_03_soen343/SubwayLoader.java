@@ -3,8 +3,7 @@ package tutorial_03_soen343;
 import java.io.File;
 import java.io.*;
 
-public class SubwayLoader
-{
+public class SubwayLoader {
     private Subway subway;
     
     public SubwayLoader() {

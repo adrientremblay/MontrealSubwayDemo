@@ -49,7 +49,7 @@ public class Subway {
         addToNetwork(station1, station2);
         addToNetwork(station2, station1);
     }
-    
+
     private void addToNetwork(Station station1, Station station2) {
         if (network.keySet().contains(station1)) {
             List connectingStations = (List) network.get(station1);
@@ -64,18 +64,21 @@ public class Subway {
     }
     
     public List getDirections(String startStationName, String endStationName) {
-        if (!this.hasStation(startStationName) || !this.hasStation(endStationName))
-        {
+        if (!this.hasStation(startStationName) || !this.hasStation(endStationName)) {
             throw new RuntimeException("Stations entered do not exist on this subway");
         }
-        
-        Station start = new Station(startStationName);
-        Station end = new Station(endStationName);
+
+        // output vars
+        Station start = this.getStation(startStationName);
+        Station end = this.getStation(endStationName);
         List route = new LinkedList();
+
+        // dijkstra vars
         List reachableStations = new LinkedList();
         Map previousStations = new HashMap();
+
+        // special case where end state is one connection away from starting station
         List neighbors = (List)network.get(start);
-        
         for (Iterator i = neighbors.iterator(); i.hasNext(); ) {
             Station station = (Station) i.next();
             if (station.equals(end)) {
@@ -115,11 +118,14 @@ public class Subway {
             nextStations = tmpNextStations;
         }
         
-        //We've found the path now!
+        // We've found the path now!
+        // unwinding the path to create a list of connections to get from the starting station
+        // to the destination station
         boolean keepLooping = true;
         Station keyStation = end;
         Station station;
-        
+
+        // TODO: Turn this into a do while loop
         while (keepLooping) {
             station = (Station) previousStations.get(keyStation);
             route.add(0, getConnection(station, keyStation));
