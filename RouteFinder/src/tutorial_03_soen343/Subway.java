@@ -22,14 +22,15 @@ public class Subway {
     }
     
     public boolean hasStation(String stationName) {
-        return stations.contains(new Station(stationName));
+        return this.getStation(stationName) != null;
     }
 
     public Station getStation(String stationName) {
         Stream<Station>  stationStream = this.stations.stream();
-        Optional<Station> foundStation = stationStream.filter(station -> station.getName() == stationName).findFirst();
+        Optional<Station> foundStation = stationStream.filter(station -> station.getName().equals( stationName)).findFirst();
         if (foundStation.isPresent())
             return foundStation.get();
+
         return null;
     }
     

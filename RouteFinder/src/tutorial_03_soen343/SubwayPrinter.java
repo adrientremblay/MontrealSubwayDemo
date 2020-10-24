@@ -3,8 +3,7 @@ package tutorial_03_soen343;
 import java.io.*;
 import java.util.*;
 
-public class SubwayPrinter
-{
+public class SubwayPrinter {
     private PrintStream out;
     
     public SubwayPrinter(OutputStream out) {
@@ -16,7 +15,7 @@ public class SubwayPrinter
         String currentLine = connection.getLineName();
         String previousLine = currentLine;
         
-        out.println("Start out at " + connection.getStation2().getName() + ".");
+        out.println("Start out at " + connection.getStation1().getName() + ".");
         out.println("Get on the " + currentLine + " heading towards " + connection.getStation2().getName() + ".");
         
         for (int i = 1; i < route.size(); i++) {
