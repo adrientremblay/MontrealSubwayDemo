@@ -5,6 +5,7 @@ import java.util.*;
 
 public class SubwayPrinter {
     private PrintStream out;
+    private final int PRICE_PER_STATION = 1; // $cad
     
     public SubwayPrinter(OutputStream out) {
         this.out = new PrintStream(out);
@@ -31,5 +32,9 @@ public class SubwayPrinter {
             }
         }
         out.println("Get off at " + connection.getStation2().getName() + " and enjoy yourself!");
+
+        // printing price
+        int price = PRICE_PER_STATION * route.size() + 1;
+        out.println("Total cost will be " + price + "$");
     }
 }

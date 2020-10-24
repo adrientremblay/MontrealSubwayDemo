@@ -8,7 +8,6 @@ Charlevoix
 Lionel Groulx
 Atwater
 Guy Concordia
-formerly Guy
 Peel
 McGill
 Place des Arts
@@ -17,7 +16,7 @@ Berri UQAM
 Beaudry
 Papineau
 Frontenac
-Préfontaine
+Prï¿½fontaine
 Joliette
 Pie IX
 Viau
@@ -81,7 +80,6 @@ Charlevoix
 Lionel Groulx
 Atwater
 Guy Concordia
-formerly Guy
 Peel
 McGill
 Place des Arts
@@ -90,7 +88,7 @@ Berri UQAM
 Beaudry
 Papineau
 Frontenac
-Préfontaine
+Prï¿½fontaine
 Joliette
 Pie IX
 Viau
