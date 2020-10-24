@@ -3,7 +3,7 @@ package tutorial_03_soen343;
 import java.io.*;
 import java.util.*;
 
-public class SubwayTester
+public class Main
 {
     public static void main(String[] args) {
         if (args.length != 2) {
