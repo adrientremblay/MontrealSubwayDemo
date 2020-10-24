@@ -17,16 +17,16 @@ class SubwayLoaderTest {
 
         // testing stations loaded
         assertAll(
-            () -> assertEquals(true, city.hasStation("Guy Concordia")),
-            () -> assertEquals(true, city.hasStation("Snowdon")),
-            () -> assertEquals(true, city.hasStation("Berri UQAM"))
+            () -> assertTrue(city.hasStation("Guy Concordia")),
+            () -> assertTrue(city.hasStation("Snowdon")),
+            () -> assertTrue(city.hasStation("Berri UQAM"))
         );
 
         // testing connections
         assertAll(
-            () -> assertEquals(true, city.hasConnection("Atwater", "Guy Concordia", "Green Line")),
-            () -> assertEquals(true,  city.hasConnection("Cote Vertu", "Du College", "Orange Line")),
-            () -> assertEquals(true, city.hasConnection("Snowdon", "Cote des Neiges", "Blue Line"))
+            () -> assertTrue(city.hasConnection("Atwater", "Guy Concordia", "Green Line")),
+            () -> assertTrue(city.hasConnection("Cote Vertu", "Du College", "Orange Line")),
+            () -> assertTrue(city.hasConnection("Snowdon", "Cote des Neiges", "Blue Line"))
         );
     }
 }

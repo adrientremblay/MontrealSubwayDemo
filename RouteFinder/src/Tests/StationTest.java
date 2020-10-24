@@ -13,6 +13,6 @@ class StationTest {
         Station station1 = new Station(TEST_STATION_NAME);
         Station station2 = new Station(TEST_STATION_NAME);
 
-        assertEquals(true, station1.equals(station2));
+        assertTrue( station1.equals(station2));
     }
 }

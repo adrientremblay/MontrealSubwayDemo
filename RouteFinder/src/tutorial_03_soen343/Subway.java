@@ -150,8 +150,7 @@ public class Subway {
         }
         return null;
     }
-        
-    
+
     public boolean hasConnection(String station1Name, String station2Name, String lineName) {
         Station station1 = new Station(station1Name);
         Station station2 = new Station(station2Name);
