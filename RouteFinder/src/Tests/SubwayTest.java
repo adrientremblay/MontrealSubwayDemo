@@ -32,9 +32,20 @@ class SubwayTest {
             }
         }
 
+        // normal ride across different lines
         assertEquals(
                 "[[A, B, Line #0], [B, C, Line #0], [C, D, Line #0], [D, J, Line #1], [J, P, Line #2]]",
                 subway.getDirections("A", "P").toString()
+        );
+        // ride to adjacent station
+        assertEquals(
+                "[[A, B, Line #0]]",
+                subway.getDirections("A", "B").toString()
+        );
+        // ride to same station
+        assertEquals(
+                "[[A, A, null]]",
+                subway.getDirections("A", "A").toString()
         );
     }
 

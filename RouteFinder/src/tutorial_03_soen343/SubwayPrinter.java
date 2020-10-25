@@ -53,7 +53,7 @@ public class SubwayPrinter {
 
         println("Start out at " + connection.getStation1().getName() + ".");
 
-        // special case
+        // case where start and end stations are the same
         if (connection.getStation1().equals(connection.getStation2())) {
             price -= PRICE_PER_STATION;
         } else {
