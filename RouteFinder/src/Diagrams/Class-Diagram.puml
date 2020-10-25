@@ -1,0 +1,49 @@
+@startuml
+class Subway {
+    Map network
+    + void addStation(String stationName)
+    + boolean hasStation(String stationName)
+    + Station getStation(String stationName)
+    + void addConnection(String station1Name, String station2Name, String lineName)
+    + List getDirections(String startStationName, String endStationName)
+    + boolean hasConnection(Station station1, Station station2, String lineName)
+    - void addToNetwork(Station station1, Station station2)
+    - Connection getConnection(Station station1, Station station2)
+}
+
+class Station {
+    - String name
+    + String getName()
+    + boolean equals(Object obj)
+    + int hashcode()
+}
+
+class SubwayLoader {
+    + Subway loadFromFile(File subwayFile)
+    - void loadStations(Subway subway, BufferedReader reader)
+    - void loadLine(Subway subway, BufferedReader reader, String lineName)
+}
+
+class SubwayPrinter {
+    PrintStream out
+    PrintStream file
+    + void printDirections(List route)
+    - void println(String output)
+
+}
+
+class Connection {
+    - String lineName
+    + Station getStation1()
+    + Station getStation2()
+    + String getLineName()
+}
+
+SubwayLoader --> Subway: subway
+
+Subway --* Station: stations
+Subway --* Connection: connections
+
+Connection --> Station: station1
+Connection --> Station: station2
+@enduml
