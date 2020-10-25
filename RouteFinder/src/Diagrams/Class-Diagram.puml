@@ -1,6 +1,6 @@
 @startuml
 class Subway {
-    Map network
+    - Map network
     + void addStation(String stationName)
     + boolean hasStation(String stationName)
     + Station getStation(String stationName)
@@ -25,8 +25,8 @@ class SubwayLoader {
 }
 
 class SubwayPrinter {
-    PrintStream out
-    PrintStream file
+    - PrintStream out
+    - PrintStream file
     + void printDirections(List route)
     - void println(String output)
 
@@ -39,11 +39,11 @@ class Connection {
     + String getLineName()
 }
 
-SubwayLoader --> Subway: subway
+SubwayLoader "1" --> "1" Subway: subway
 
-Subway --* Station: stations
-Subway --* Connection: connections
+Subway "1" --* "*" Station: stations
+Subway "1" --* "*" Connection: connections
 
-Connection --> Station: station1
-Connection --> Station: station2
+Connection "1" --> "1" Station: station1
+Connection "1" --> "1" Station: station2
 @enduml
