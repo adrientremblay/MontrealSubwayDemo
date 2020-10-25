@@ -46,12 +46,12 @@ public class SubwayPrinter {
      * @param route the list of connections taken
      */
     public void printDirections(List route) {
-        int price = PRICE_PER_STATION * route.size() + 1;
+        int price = PRICE_PER_STATION * route.size();
         Connection connection = (Connection) route.get(0);
         String currentLine = connection.getLineName();
         String previousLine = currentLine;
 
-        println("Start out at " + connection.getStation1().getName() + ".");
+        println("Start out at " + connection.getStation2().getName() + ".");
 
         // case where start and end stations are the same
         if (connection.getStation1().equals(connection.getStation2())) {
