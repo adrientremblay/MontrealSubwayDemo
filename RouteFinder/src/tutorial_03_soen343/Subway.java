@@ -134,7 +134,6 @@ public class Subway {
             throw new RuntimeException("Stations entered do not exist on this subway");
         }
 
-        //TODO: add special case
 
         // output vars
         Station start = this.getStation(startStationName);
@@ -145,7 +144,13 @@ public class Subway {
         List reachableStations = new LinkedList();
         Map previousStations = new HashMap();
 
-        // special case where end state is one connection away from starting station
+        // special case where start station is already the end station
+        if (startStationName.equals(endStationName)) {
+            route.add(new Connection(start, end, null));
+            return route;
+        }
+
+        // special case where end station is one connection away from starting station
         List neighbors = (List)network.get(start);
         for (Iterator i = neighbors.iterator(); i.hasNext(); ) {
             Station station = (Station) i.next();

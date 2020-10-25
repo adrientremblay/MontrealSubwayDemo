@@ -41,6 +41,12 @@ public class Station {
         return false;
     }
 
+    /**
+     * Converts this Station into an integer
+     * hashcode based on it's name.
+     * For use within the network HashMap.
+     * @return the hashcode number
+     */
     public int hashCode() {
         return name.toLowerCase().hashCode();
     }

@@ -46,28 +46,35 @@ public class SubwayPrinter {
      * @param route the list of connections taken
      */
     public void printDirections(List route) {
+        int price = PRICE_PER_STATION * route.size() + 1;
         Connection connection = (Connection) route.get(0);
         String currentLine = connection.getLineName();
         String previousLine = currentLine;
-        
+
         println("Start out at " + connection.getStation1().getName() + ".");
-        println("Get on the " + currentLine + " heading towards " + connection.getStation2().getName() + ".");
-        
-        for (int i = 1; i < route.size(); i++) {
-            connection = (Connection) route.get(i);
-            currentLine = connection.getLineName();
-            if (currentLine.equals(previousLine)) {
-                println("  Continue past  " + connection.getStation1().getName() + "...");
+
+        // special case
+        if (connection.getStation1().equals(connection.getStation2())) {
+            price -= PRICE_PER_STATION;
+        } else {
+            println("Get on the " + currentLine + " heading towards " + connection.getStation2().getName() + ".");
+
+            for (int i = 1; i < route.size(); i++) {
+                connection = (Connection) route.get(i);
+                currentLine = connection.getLineName();
+                if (currentLine.equals(previousLine)) {
+                    println("  Continue past  " + connection.getStation1().getName() + "...");
+                }
+                else {
+                    println("When you get to " + connection.getStation1().getName() + ", get off the " + previousLine + ".");
+                    println("Switch over to the " + currentLine + ", heading towards " + connection.getStation2().getName() + ".");
+                    previousLine = currentLine;
+                }
             }
-            else {
-                println("When you get to " + connection.getStation1().getName() + ", get off the " + previousLine + ".");
-                println("Switch over to the " + currentLine + ", heading towards " + connection.getStation2().getName() + ".");
-                previousLine = currentLine;
-            }
+
         }
         println("Get off at " + connection.getStation2().getName() + " and enjoy yourself!");
 
-        int price = PRICE_PER_STATION * route.size() + 1;
         println("Total cost will be " + price + "$");
     }
 }
