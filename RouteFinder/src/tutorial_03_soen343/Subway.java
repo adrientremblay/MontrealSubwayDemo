@@ -134,6 +134,8 @@ public class Subway {
             throw new RuntimeException("Stations entered do not exist on this subway");
         }
 
+        //TODO: add special case
+
         // output vars
         Station start = this.getStation(startStationName);
         Station end = this.getStation(endStationName);
